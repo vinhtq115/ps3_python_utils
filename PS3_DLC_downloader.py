@@ -49,6 +49,6 @@ with open('pkgi_dlcs.txt', encoding='utf8') as PKGI_DLCS:
         if not os.path.isdir(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16])):
             os.mkdir(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16]))
         rap_path = os.path.join(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16]), rap + '.rap')
-        rap_file = open(rap_path, 'w', encoding='ascii')
-        rap_file.write(rap)
+        rap_file = open(rap_path, 'wb')
+        rap_file.write(bytes.fromhex(rap))
         rap_file.close()
