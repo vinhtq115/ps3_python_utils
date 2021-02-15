@@ -46,6 +46,8 @@ with open('pkgi_dlcs.txt', encoding='utf8') as PKGI_DLCS:
         urllib.request.urlretrieve(download_url, os.path.join(download_dir, file_name))
         # Save RAP
         rap = item['rap']
+        if rap == 'NOT REQUIRED':  # Skip downloading RAP if not required
+            continue
         if not os.path.isdir(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16])):
             os.mkdir(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16]))
         rap_path = os.path.join(os.path.join(DOWNLOAD_RAP_PATH, item['contentid'][7:16]), rap + '.rap')
